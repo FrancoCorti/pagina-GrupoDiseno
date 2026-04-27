@@ -229,8 +229,25 @@ body {
   padding-top: var(--header-h);
   background-image: url('../assets/hero-cosntru.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-color: var(--c-gris-claro); /* visible mientras no haya imagen */
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  .section--portada {
+    background-image: url('../assets/hero-mobile.jpg');
+    background-position: center top;
+    background-attachment: scroll;
+    min-height: 85svh;
+  }
+}
+
+@media (max-width: 480px) {
+  .section--portada {
+    padding-bottom: var(--sp-m);
+    min-height: 80svh;
+  }
 }
 
 .portada-overlay {
