@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRUPO DISEÑO — Diseño, Arquitectura y Construcción</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ================================================
+       INTRO / SPLASH
+  ================================================= -->
+  <div id="intro" class="intro-overlay" aria-hidden="true">
+    <div class="intro-content">
+      <img src="assets/logo/logo-constru.png" alt="GRUPO DISEÑO" class="intro-logo">
+      <div class="intro-bar"></div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#portada" class="site-logo" aria-label="GRUPO DISEÑO — inicio">
+        <img src="assets/logo/logo-constru.png" alt="GRUPO DISEÑO" class="logo-img">
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="#diseno">diseño</a></li>
+          <li><a href="#arquitectura">arquitectura</a></li>
+          <li><a href="#construccion">construcción</a></li>
+          <li><a href="#quienes-somos">quiénes somos</a></li>
+          <li><a href="#galeria" class="nav-galeria">galería</a></li>
+          <li><a href="#contacto">contáctenos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================================================
+         PORTADA
+    ================================================= -->
+    <section id="portada" class="section section--portada">
+      <div class="portada-overlay"></div>
+      <div class="container portada-content">
+        <span class="portada-subtag">diseño &nbsp;·&nbsp; arquitectura &nbsp;·&nbsp; construcción</span>
+        <p class="portada-headline">
+          Proyectos integrales de diseño, arquitectura<br>
+          y construcción.
+        </p>
+        <a href="#filosofia" class="portada-scroll" aria-label="Ver más">&#8595;</a>
+      </div>
+    </section>
+
+    <!-- ================================================
+         FILOSOFÍA
+    ================================================= -->
+    <section id="filosofia" class="section section--filosofia">
+      <div class="container filosofia-grid">
+
+        <div class="filosofia-bloque">
+          <p>Un excelente diseño y una ejecución responsable de las obras contratadas son parte fundamental de nuestra filosofía de trabajo.</p>
+        </div>
+
+        <div class="filosofia-bloque">
+          <p>Nos especializamos en proyectos y reciclajes medianos y pequeños donde volcamos nuestra creatividad en el máximo aprovechamiento de los espacios y la valorización de cada metro cuadrado haciéndolo funcional y disfrutable.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         QUIÉNES SOMOS
+    ================================================= -->
+    <section id="quienes-somos" class="section section--quienes-somos">
+      <div class="container">
+
+        <div class="qs-header reveal">
+          <h2 class="section-title qs-title">Quiénes somos</h2>
+          <div class="qs-title-line"></div>
+        </div>
+
+        <div class="qs-grid">
+
+          <div class="qs-col-main reveal">
+            <p class="qs-lead">Somos un grupo de profesionales y empresas vinculadas al diseño, la arquitectura y la construcción que en forma coordinada realizamos para nuestros clientes los proyectos y la ejecución de sus obras.</p>
+            <p>Esta forma de trabajo brinda a nuestros clientes mucha tranquilidad pues, aun siendo equipos de trabajo independientes, existe una logística y dirección única y una interrelación directa que permite mejores tiempos y un trabajo más organizado y coordinado.</p>
+            <p>La presupuestación, administración y logística conjunta logra mejores precios, obras y trabajos menos complejos y mayores beneficios para todas las partes.</p>
+            <p>Realizamos trabajos en forma integral (proyecto/ejecución) o sectorizado: proyecto y no ejecución, reforma o construcción a partir de proyectos ya realizados, etc.</p>
+          </div>
+
+          <div class="qs-col-aside reveal">
+            <div class="qs-stats">
+              <div class="qs-stat">
+                <div class="qs-stat-row">
+                  <span class="qs-stat-num" data-target="15">0</span>
+                  <span class="qs-stat-plus">+</span>
+                </div>
+                <span class="qs-stat-label">años de trayectoria</span>
+              </div>
+              <div class="qs-stat">
+                <div class="qs-stat-row">
+                  <span class="qs-stat-num" data-target="100">0</span>
+                  <span class="qs-stat-plus">+</span>
+                </div>
+                <span class="qs-stat-label">proyectos realizados</span>
+              </div>
+              <div class="qs-stat">
+                <div class="qs-stat-row">
+                  <span class="qs-stat-num" data-target="6">0</span>
+                </div>
+                <span class="qs-stat-label">especialidades integradas</span>
+              </div>
+            </div>
+
+            <div class="qs-firma-card">
+              <div class="qs-firma-avatar">FdS</div>
+              <div>
+                <p class="qs-firma-cargo">Dirección y coordinación general</p>
+                <p class="qs-firma-nombre">Fernando da Silva</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="qs-values">
+          <div class="qs-value-card reveal">
+            <div class="qs-value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>Equipo integrado</h3>
+            <p>Dirección única, múltiples especialidades coordinadas en cada proyecto.</p>
+          </div>
+          <div class="qs-value-card reveal">
+            <div class="qs-value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3>Tiempos óptimos</h3>
+            <p>La interrelación directa entre equipos permite obras más ágiles y organizadas.</p>
+          </div>
+          <div class="qs-value-card reveal">
+            <div class="qs-value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <h3>Mejor inversión</h3>
+            <p>Presupuestación conjunta que asegura precios competitivos y máximo valor.</p>
+          </div>
+          <div class="qs-value-card reveal">
+            <div class="qs-value-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Flexibilidad total</h3>
+            <p>Trabajamos integral o sectorizado, adaptándonos a cada necesidad específica.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         DISEÑO
+    ================================================= -->
+    <section id="diseno" class="section section--diseno">
+      <div class="container">
+
+        <div class="servicio-pro-header reveal">
+          <span class="servicio-num" aria-hidden="true">01</span>
+          <div class="servicio-pro-title-wrap">
+            <h2 class="servicio-pro-title">Diseño</h2>
+            <p class="servicio-pro-sub">Interiores · Espacios · Mobiliario</p>
+          </div>
+        </div>
+
+        <div class="servicio-pro-grid">
+          <div class="servicio-pro-desc reveal">
+            <p>Entendemos el diseño de interiores como el arte de crear espacios funcionales, cómodos, técnicamente correctos, estética y visualmente agradables y que brinden a quienes viven en ellos el máximo confort.</p>
+            <p>Piense en nosotros para cualquier diseño: desde un baño o un dormitorio hasta un local comercial o una casa completa.</p>
+            <p class="servicio-pro-destacado">Por menos de lo que piensa podemos cambiarle su calidad de vida.</p>
+          </div>
+          <div class="servicio-pro-features reveal">
+            <ul class="servicio-feature-list">
+              <li>Casas y apartamentos</li>
+              <li>Locales comerciales</li>
+              <li>Halls de edificios</li>
+              <li>Diseño de mobiliario a medida</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         ARQUITECTURA
+    ================================================= -->
+    <section id="arquitectura" class="section section--arquitectura">
+      <div class="container">
+
+        <div class="servicio-pro-header reveal">
+          <span class="servicio-num" aria-hidden="true">02</span>
+          <div class="servicio-pro-title-wrap">
+            <h2 class="servicio-pro-title">Arquitectura</h2>
+            <p class="servicio-pro-sub">Proyectos · Reciclajes · Dirección de obra</p>
+          </div>
+        </div>
+
+        <div class="servicio-pro-grid">
+          <div class="servicio-pro-desc reveal">
+            <p>Brindamos un servicio integral de arquitectura uniendo nuestra creatividad, conocimientos técnicos y experiencia a los gustos y necesidades de nuestros clientes.</p>
+            <p>Trabajamos con un objetivo primordial de confort, buen gusto y valorización del reciclaje o espacio creado.</p>
+            <p>Integramos el diseño de interior con la arquitectura del volumen en una conjunción lógica, funcional y realizable tanto en aspectos técnicos como económicos.</p>
+            <p>Adaptamos nuestro trabajo al presupuesto de nuestros clientes y ajustamos al máximo la planificación y documentación de cada obra para minimizar los imprevistos, bajar los costos y evitar adicionales y demoras.</p>
+            <p class="arq-asesor">Asesoramos a clientes al momento de compra de propiedades evaluando estado actual y posibilidades de ampliación o reforma antes de concretar la misma.</p>
+          </div>
+          <div class="servicio-pro-features reveal">
+            <div class="arq-etapas">
+              <p class="arq-etapas-title">Etapas del proyecto</p>
+              <div class="arq-etapa"><span class="arq-etapa-dot"></span><span>Anteproyecto</span></div>
+              <div class="arq-etapa"><span class="arq-etapa-dot"></span><span>Proyecto</span></div>
+              <div class="arq-etapa"><span class="arq-etapa-dot"></span><span>Proyecto ejecutivo</span></div>
+              <div class="arq-etapa"><span class="arq-etapa-dot"></span><span>Dirección de obra</span></div>
+            </div>
+            <ul class="servicio-feature-list servicio-feature-list--light arq-tipos">
+              <li>Casas y grupos habitacionales</li>
+              <li>Locales comerciales</li>
+              <li>Reciclajes y ampliaciones</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         CONSTRUCCIÓN
+    ================================================= -->
+    <section id="construccion" class="section section--construccion">
+      <div class="container">
+
+        <div class="servicio-pro-header reveal">
+          <span class="servicio-num" aria-hidden="true">03</span>
+          <div class="servicio-pro-title-wrap">
+            <h2 class="servicio-pro-title">Construcción</h2>
+            <p class="servicio-pro-sub">Obras · Reformas · Técnicas tradicionales y modernas</p>
+          </div>
+        </div>
+
+        <div class="servicio-pro-grid">
+          <div class="servicio-pro-desc reveal">
+            <p>Realizamos todo tipo de obras con construcción tradicional o técnicas actuales secas: Steel Frame, Isopaneles, etc.</p>
+            <p>Son personas calificadas, preparadas técnicamente, con años de experiencia, que disfrutan lo que hacen y que valoran y respetan la confianza que el cliente en ellos deposita.</p>
+            <p>Trabajamos con proveedores de materiales de primer nivel para asegurarnos que nuestra mano de obra esté respaldada con productos nobles, correctos y garantizados.</p>
+            <p>Contamos con equipos para trabajos en altura: edificios, etc.</p>
+          </div>
+          <div class="servicio-pro-features reveal">
+            <div class="const-especialidades">
+              <div class="const-esp">Albañilería</div>
+              <div class="const-esp">Yeso</div>
+              <div class="const-esp">Pintura</div>
+              <div class="const-esp">Revestimientos</div>
+              <div class="const-esp">Impermeabilización</div>
+              <div class="const-esp">Sanitaria</div>
+              <div class="const-esp">Electricidad</div>
+              <div class="const-esp">Trabajos en altura</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="const-extras reveal">
+          <div class="const-extra-card">
+            <p>Trabajamos con técnicos y profesionales complementarios para brindar a nuestros clientes un servicio integral y la máxima seguridad: Estudio contable, Abogados, Corredor de seguros, Gestoría especializada en inscripción de obra en Intendencias, Agrimensores, Técnico previsionista.</p>
+          </div>
+          <div class="const-cta-card">
+            <p class="const-cta-text">Presupuestos</p>
+            <p class="const-cta-highlight">SIN COSTO</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         GALERÍA
+    ================================================= -->
+    <section id="galeria" class="section section--galeria">
+      <div class="container">
+        <h2 class="section-title">Galería</h2>
+        <p class="galeria-nota">Haga click en cada foto para ver más imágenes de cada trabajo.</p>
+
+        <div class="galeria-grid">
+
+          <figure class="proyecto-card"
+                  data-images="assets/galeria/proyecto-1/p1foto1.jpeg,assets/galeria/proyecto-1/p1foto2.jpeg,assets/galeria/proyecto-1/p1foto3.jpeg"
+                  data-titulo="Apartamento en Pocitos"
+                  data-desc="Proyecto integral de diseño de interiores y ejecución de la obra."
+                  tabindex="0" role="button" aria-label="Ver galería: Apartamento en Pocitos">
+            <img src="assets/galeria/proyecto-1/p1foto1.jpeg" alt="Apartamento en Pocitos" class="proyecto-thumb">
+            <figcaption>Apartamento en Pocitos</figcaption>
+          </figure>
+
+          <figure class="proyecto-card"
+                  data-images="assets/galeria/proyecto-2/01.jpg,assets/galeria/proyecto-2/02.jpg"
+                  data-titulo="Local comercial Punta Carretas"
+                  data-desc="Diseño y ejecución de local comercial. Proyecto integral."
+                  tabindex="0" role="button" aria-label="Ver galería: Local comercial Punta Carretas">
+            <div class="proyecto-thumb proyecto-thumb--2"></div>
+            <figcaption>Local comercial Punta Carretas</figcaption>
+          </figure>
+
+          <figure class="proyecto-card"
+                  data-images="assets/galeria/proyecto-3/01.jpg,assets/galeria/proyecto-3/02.jpg,assets/galeria/proyecto-3/03.jpg,assets/galeria/proyecto-3/04.jpg"
+                  data-titulo="Casa en Carrasco"
+                  data-desc="Proyecto arquitectónico y dirección de obra. Reciclaje y ampliación."
+                  tabindex="0" role="button" aria-label="Ver galería: Casa en Carrasco">
+            <div class="proyecto-thumb proyecto-thumb--3"></div>
+            <figcaption>Casa en Carrasco</figcaption>
+          </figure>
+
+          <figure class="proyecto-card"
+                  data-images="assets/galeria/proyecto-4/01.jpg,assets/galeria/proyecto-4/02.jpg"
+                  data-titulo="Reciclaje Palermo"
+                  data-desc="Reforma integral de apartamento. Diseño de interiores y construcción."
+                  tabindex="0" role="button" aria-label="Ver galería: Reciclaje Palermo">
+            <div class="proyecto-thumb proyecto-thumb--4"></div>
+            <figcaption>Reciclaje Palermo</figcaption>
+          </figure>
+
+          <figure class="proyecto-card"
+                  data-images="assets/galeria/proyecto-5/01.jpg,assets/galeria/proyecto-5/02.jpg,assets/galeria/proyecto-5/03.jpg"
+                  data-titulo="Diseño de interiores — Suits Hotel"
+                  data-desc="Proyecto integral de diseño de interiores para suites. Diseño de mobiliario a medida."
+                  tabindex="0" role="button" aria-label="Ver galería: Diseño de interiores — Suits Hotel">
+            <div class="proyecto-thumb proyecto-thumb--5"></div>
+            <figcaption>Diseño de interiores — Suits Hotel</figcaption>
+          </figure>
+
+          <figure class="proyecto-card"
+                  data-images="assets/galeria/proyecto-6/01.jpg,assets/galeria/proyecto-6/02.jpg"
+                  data-titulo="Reforma integral Ciudad Vieja"
+                  data-desc="Reciclaje edilicio. Proyecto y ejecución de obra en edificio patrimonial."
+                  tabindex="0" role="button" aria-label="Ver galería: Reforma integral Ciudad Vieja">
+            <div class="proyecto-thumb proyecto-thumb--6"></div>
+            <figcaption>Reforma integral Ciudad Vieja</figcaption>
+          </figure>
+
+        </div>
+        <p class="galeria-disclaimer">No en todos los proyectos se muestran imágenes del proceso. No siempre documentamos toda la obra terminada sino que priorizamos los aspectos técnicos para información al cliente por lo que pueden faltar imágenes en parte de la galería.</p>
+      </div>
+    </section>
+
+    <!-- ================================================
+         CONTACTO
+    ================================================= -->
+    <section id="contacto" class="section section--contacto">
+      <div class="contacto-wrap">
+
+        <!-- Panel izquierdo: CTA -->
+        <div class="contacto-left reveal">
+          <span class="contacto-kicker">Trabajemos juntos</span>
+          <h2 class="contacto-headline">Conversemos<br>sobre su proyecto.</h2>
+          <p class="contacto-texto">Sin ningún compromiso analizamos su necesidad y buscamos la solución más conveniente para usted.</p>
+          <a href="mailto:grupodise%C3%B1o@gmail.com" class="contacto-btn">
+            contáctenos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Panel derecho: datos -->
+        <div class="contacto-right reveal">
+
+          <div class="contacto-items">
+            <a href="mailto:grupodise%C3%B1o@gmail.com" class="contacto-item">
+              <div class="contacto-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div>
+                <span class="contacto-item-label">Email</span>
+                <span class="contacto-item-value">grupodiseño@gmail.com</span>
+              </div>
+            </a>
+            <a href="tel:+59898966551" class="contacto-item">
+              <div class="contacto-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.36 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.64a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/>
+                </svg>
+              </div>
+              <div>
+                <span class="contacto-item-label">Teléfono</span>
+                <span class="contacto-item-value">+598 098 966 551</span>
+              </div>
+            </a>
+            <div class="contacto-item">
+              <div class="contacto-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <span class="contacto-item-label">Ubicación</span>
+                <span class="contacto-item-value">Montevideo, Uruguay</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contacto-respuesta-nota">
+            <p>Nos comunicaremos con usted a la brevedad.</p>
+            <p>Gracias por su consulta.</p>
+          </div>
+
+          <div class="contacto-brand">
+            <p class="contacto-brand-name">GRUPODISEÑO</p>
+            <p class="contacto-brand-tag">Excelencia en diseño, arquitectura y construcción</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <img src="assets/logo/logo-constru.png" alt="GRUPO DISEÑO" class="logo-img logo-img--footer">
+        <span class="footer-tagline">Excelencia en diseño,<br>arquitectura y construcción</span>
+      </div>
+      <nav class="footer-nav" aria-label="Navegación de pie de página">
+        <a href="#diseno">diseño</a>
+        <a href="#arquitectura">arquitectura</a>
+        <a href="#construccion">construcción</a>
+        <a href="#quienes-somos">quiénes somos</a>
+        <a href="#galeria">galería</a>
+        <a href="#contacto">contáctenos</a>
+      </nav>
+      <p class="footer-copy">© <span id="anio-actual"></span> GRUPODISEÑO — Montevideo, Uruguay</p>
+    </div>
+  </footer>
+
+  <!-- ================================================
+       PROJECT VIEWER
+  ================================================= -->
+  <div id="project-viewer" class="project-viewer" role="dialog" aria-modal="true" aria-label="Galería del proyecto" hidden>
+    <div class="viewer-header">
+      <div class="viewer-info">
+        <h3 class="viewer-titulo" id="viewer-titulo"></h3>
+        <p class="viewer-desc" id="viewer-desc"></p>
+      </div>
+      <button class="viewer-cerrar" id="viewer-cerrar" aria-label="Cerrar galería">cerrar &nbsp;X</button>
+    </div>
+    <div class="viewer-body">
+      <div class="viewer-thumbs" id="viewer-thumbs"></div>
+      <div class="viewer-main">
+        <button class="viewer-prev" id="viewer-prev" aria-label="Imagen anterior">&#8249;</button>
+        <img id="viewer-foto" class="viewer-foto" src="" alt="">
+        <button class="viewer-next" id="viewer-next" aria-label="Imagen siguiente">&#8250;</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
