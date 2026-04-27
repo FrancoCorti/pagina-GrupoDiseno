@@ -224,8 +224,7 @@ body {
   position: relative;
   min-height: 100svh;
   display: flex;
-  align-items: flex-end;
-  padding-bottom: var(--sp-l);
+  align-items: center;
   padding-top: var(--header-h);
   background-image: url('../assets/hero-cosntru.jpg');
   background-size: cover;
@@ -263,6 +262,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: var(--sp-s);
+  margin-top: 8vh;
 }
 
 .portada-subtag {
