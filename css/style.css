@@ -239,14 +239,8 @@ body {
     background-image: url('../assets/hero-mobile.jpg');
     background-position: center top;
     background-attachment: scroll;
-    min-height: 85svh;
-  }
-}
-
-@media (max-width: 480px) {
-  .section--portada {
-    padding-bottom: var(--sp-m);
-    min-height: 80svh;
+    min-height: 100svh;
+    min-height: 100dvh;
   }
 }
 
