@@ -259,3 +259,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (e.key === 'ArrowRight') mostrarFoto(idx + 1);
   });
 })();
+
+/* --- Galería: fallback color cuando no hay foto --- */
+(function () {
+  document.querySelectorAll('.proyecto-card img.proyecto-thumb').forEach(img => {
+    img.addEventListener('error', () => {
+      const match = img.src.match(/proyecto-(\d+)/);
+      const num = match ? match[1] : '';
+      const div = document.createElement('div');
+      div.className = `proyecto-thumb${num ? ` proyecto-thumb--${num}` : ''}`;
+      img.replaceWith(div);
+    });
+  });
+})();
+
+/* --- Galería: botón Ver más / Ver menos --- */
+(function () {
+  const btn  = document.getElementById('galeria-ver-mas');
+  const grid = document.querySelector('.galeria-grid');
+  if (!btn || !grid) return;
+
+  const label = btn.querySelector('.galeria-ver-mas-label');
+
+  btn.addEventListener('click', () => {
+    const expanded = grid.classList.toggle('is-expanded');
+    btn.setAttribute('aria-expanded', String(expanded));
+    label.textContent = expanded ? 'Ver menos' : 'Ver más';
+
+    if (!expanded) {
+      grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+})();
