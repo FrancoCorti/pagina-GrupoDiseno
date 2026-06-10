@@ -18,31 +18,32 @@
   }, 1500);
 })();
 
-/* --- Header transparente sobre portada --- */
+/* --- Barra sticky: aparece al dejar atrás la portada --- */
 (function () {
-  const header  = document.querySelector('.site-header');
+  const sticky  = document.querySelector('.site-header--sticky');
   const portada = document.getElementById('portada');
-  if (!header || !portada) return;
+  if (!sticky || !portada) return;
 
+  /* La barra de la portada (.site-header--portada) se desplaza con ella.
+     La barra sticky sólo se muestra cuando la portada ya no está en pantalla,
+     evitando que se superponga a la portada al scrollear. */
   const observer = new IntersectionObserver(
-    ([entry]) => header.classList.toggle('is-transparent', entry.isIntersecting),
-    { threshold: 0.05 }
+    ([entry]) => sticky.classList.toggle('is-visible', !entry.isIntersecting),
+    { threshold: 0 }
   );
   observer.observe(portada);
-
-  /* Estado inicial (sin esperar scroll) */
-  header.classList.add('is-transparent');
 })();
 
 /* --- Año dinámico en footer --- */
 const anioEl = document.getElementById('anio-actual');
 if (anioEl) anioEl.textContent = new Date().getFullYear();
 
-/* --- Menú mobile --- */
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu   = document.querySelector('.nav-menu');
+/* --- Menú mobile (se conecta en ambas barras) --- */
+document.querySelectorAll('.site-header').forEach(header => {
+  const navToggle = header.querySelector('.nav-toggle');
+  const navMenu   = header.querySelector('.nav-menu');
+  if (!navToggle || !navMenu) return;
 
-if (navToggle && navMenu) {
   navToggle.addEventListener('click', () => {
     const open = navMenu.classList.toggle('is-open');
     navToggle.setAttribute('aria-expanded', String(open));
@@ -54,7 +55,7 @@ if (navToggle && navMenu) {
       navToggle.setAttribute('aria-expanded', 'false');
     });
   });
-}
+});
 
 /* --- Scroll suave compensando header sticky --- */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -169,6 +170,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 /* --- Project Viewer (galería split: thumbs + foto principal) --- */
 (function () {
+  const GALERIA_VIEWER_ENABLED = false;
   const viewer      = document.getElementById('project-viewer');
   const tituloEl    = document.getElementById('viewer-titulo');
   const descEl      = document.getElementById('viewer-desc');
@@ -236,6 +238,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   /* Abrir al clickear una tarjeta de proyecto */
   const galeriaGrid = document.querySelector('.galeria-grid');
   if (galeriaGrid) {
+    if (!GALERIA_VIEWER_ENABLED) {
+      galeriaGrid.classList.add('is-viewer-disabled');
+      galeriaGrid.querySelectorAll('.proyecto-card').forEach(card => {
+        card.removeAttribute('tabindex');
+        card.removeAttribute('role');
+        card.removeAttribute('aria-label');
+      });
+      return;
+    }
+
     galeriaGrid.addEventListener('click', e => {
       const card = e.target.closest('.proyecto-card');
       if (card) abrir(card);
@@ -263,13 +275,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 /* --- Galería: fallback color cuando no hay foto --- */
 (function () {
   document.querySelectorAll('.proyecto-card img.proyecto-thumb').forEach(img => {
-    img.addEventListener('error', () => {
+    function mostrarPlaceholder() {
       const match = img.src.match(/proyecto-(\d+)/);
       const num = match ? match[1] : '';
       const div = document.createElement('div');
       div.className = `proyecto-thumb${num ? ` proyecto-thumb--${num}` : ''}`;
       img.replaceWith(div);
-    });
+    }
+
+    img.addEventListener('error', mostrarPlaceholder, { once: true });
+    if (img.complete && img.naturalWidth === 0) mostrarPlaceholder();
   });
 })();
 

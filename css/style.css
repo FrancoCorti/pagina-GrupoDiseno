@@ -139,11 +139,10 @@ body {
 }
 
 /* --- 5. Header / nav --- */
+/* Hay DOS barras idénticas (ver index.html):
+   - .site-header--portada : vive dentro de la portada y se desplaza con ella.
+   - .site-header--sticky  : fija; aparece al dejar atrás la portada. */
 .site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 100;
   background: var(--c-blanco);
   border-bottom: 1px solid var(--c-gris-claro);
@@ -151,9 +150,36 @@ body {
   transition: background 0.35s, border-color 0.35s;
 }
 
-.site-header.is-transparent {
+/* Barra "fija a la portada": se desplaza junto con la portada al scrollear */
+.site-header--portada {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
   background: transparent;
   border-bottom-color: transparent;
+}
+
+/* Barra sticky: permanece fija arriba; oculta mientras se ve la portada */
+.site-header--sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.35s ease, opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+
+.site-header--sticky.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform 0.35s ease, opacity 0.35s ease, visibility 0s;
 }
 
 .header-inner {
@@ -174,6 +200,9 @@ body {
 .logo-img--footer {
   height: 58px;
 }
+
+.logo-img--vertical { display: none; }
+.logo-img--horizontal { display: block; height: 74px; }
 
 
 .nav-menu {
@@ -223,10 +252,37 @@ body {
   transition: transform 0.2s, opacity 0.2s;
 }
 
+/* Íconos de redes en la navbar (sólo se muestran en mobile) */
+.nav-social { display: none; }
+
+.nav-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #AAAAAA;
+  color: var(--c-blanco);
+  transition: background 0.2s;
+}
+
+.nav-social-btn:hover {
+  background: var(--c-naranja);
+  color: var(--c-blanco);
+}
+
+.nav-social-btn svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
 /* --- 6. Secciones específicas --- */
 
 /* PORTADA */
 .section--portada {
+  position: relative; /* ancla la barra .site-header--portada */
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 100svh;
@@ -338,8 +394,9 @@ body {
 
 /* FILOSOFÍA */
 .section--filosofia {
-  background: var(--c-negro);
-  border-top: 3px solid var(--c-naranja);
+  background: var(--c-gris-claro);
+  border-top: 18px solid var(--c-naranja);
+  border-bottom: 10px solid var(--c-negro);
   padding: 0;
 }
 
@@ -363,13 +420,18 @@ body {
 }
 
 .filosofia-bloque:first-child {
-  padding-left: clamp(30rem, 22vw, 50rem);
-  padding-right: 0;
+  background: var(--c-negro);
+  padding-left: clamp(2rem, 5vw, 6rem);
+  padding-right: clamp(2rem, 5vw, 6rem);
+  justify-content: center;
+  text-align: justify;
 }
 
 .filosofia-bloque:first-child p {
-  max-width: 22ch;
-  margin-bottom: 2rem;
+  max-width: 26ch;
+  margin-inline: auto;
+  font-size: clamp(22px, 1.2vw + 15px, 32px);
+  line-height: 1.5;
 }
 
 .filosofia-bloque--highlight {
@@ -387,8 +449,8 @@ body {
 
 .filosofia-highlight-icon {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 120px;
   background: var(--c-naranja);
   margin-top: 6px;
 }
@@ -511,7 +573,7 @@ body {
 .section--galeria .section-title {
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 400;
-  color: rgba(0,0,0,0.16);
+  color: rgba(0,0,0,0.55);
   letter-spacing: -0.01em;
   line-height: 1;
   margin-bottom: 0.3em;
@@ -551,6 +613,15 @@ body {
 .proyecto-card:focus {
   border-color: var(--c-naranja);
   outline: none;
+}
+
+.galeria-grid.is-viewer-disabled .proyecto-card {
+  cursor: default;
+}
+
+.galeria-grid.is-viewer-disabled .proyecto-card:hover,
+.galeria-grid.is-viewer-disabled .proyecto-card:focus {
+  border-color: var(--c-gris-claro);
 }
 
 .proyecto-thumb {
@@ -650,6 +721,10 @@ body {
 .contacto-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.contacto-wrap > * {
+  min-width: 0;
 }
 
 /* Panel izquierdo */
@@ -764,6 +839,10 @@ body {
   flex: 1;
 }
 
+.contacto-item > div {
+  min-width: 0;
+}
+
 .contacto-item:last-child { border-bottom: none; }
 
 .contacto-item-sq {
@@ -809,6 +888,7 @@ a.contacto-item-sq:hover {
   font-size: clamp(16px, 1.2vw + 11px, 22px);
   color: #333;
   transition: color 0.25s;
+  overflow-wrap: anywhere;
 }
 
 /* BRAND BAR */
@@ -875,15 +955,32 @@ a.contacto-item-sq:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: var(--sp-m);
-    gap: var(--sp-s);
+    padding: 3.5rem var(--sp-m);
+    gap: 1.35rem;
   }
   .brand-bar-logo {
     margin-left: 0;
     align-items: center;
+    gap: 0.8rem;
   }
   .brand-bar-logo img {
-    height: 130px;
+    height: 165px;
+  }
+  .brand-bar-tagline {
+    font-size: clamp(24px, 7vw, 32px);
+    color: #777;
+    line-height: 1.28;
+  }
+  .brand-bar-social {
+    gap: 0.8rem;
+  }
+  .brand-bar-social-btn {
+    width: 46px;
+    height: 46px;
+  }
+  .brand-bar-social-btn svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -933,6 +1030,22 @@ a.contacto-item-sq:hover {
   font-size: var(--fs-small);
   color: var(--c-gris);
   margin-top: var(--sp-xs);
+}
+
+.footer-credit {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(111,111,111,0.65);
+  margin-top: 0.35rem;
+}
+
+.footer-credit a {
+  color: inherit;
+}
+
+.footer-credit a:hover {
+  color: var(--c-naranja);
 }
 
 /* --- 7. Project Viewer --- */
@@ -1087,6 +1200,30 @@ a.contacto-item-sq:hover {
 
 /* --- 8. Responsive --- */
 @media (max-width: 768px) {
+  /* Navbar mobile: más compacta, logo apaisado y redes al lado del menú */
+  :root { --header-h: 64px; }
+
+  /* En mobile la barra de la portada también es blanca (el logo apaisado tiene fondo blanco) */
+  .site-header--portada {
+    background: var(--c-blanco);
+    border-bottom-color: var(--c-gris-claro);
+  }
+
+  .logo-img--vertical   { display: none; }
+  .logo-img--horizontal { display: block; height: 64px; }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .nav-social {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
   .nav-toggle { display: flex; }
 
   .nav-menu {
@@ -1108,17 +1245,55 @@ a.contacto-item-sq:hover {
 
   .section--portada {
     grid-template-columns: 1fr;
-    grid-template-rows: 55vw auto;
+    grid-template-rows: 100vw minmax(0, 1fr);
+    align-content: start;
     min-height: 100svh;
     min-height: 100dvh;
   }
 
   .portada-imagen { height: 100%; }
 
+  .portada-imagen img {
+    object-position: 85% center;
+  }
+
+  .portada-texto {
+    justify-content: flex-start;
+    gap: 0.35rem;
+    padding: 1rem clamp(1.5rem, 7vw, 2rem) 1.35rem;
+  }
+
+  .portada-intro {
+    font-size: clamp(24px, 6.8vw, 30px);
+    line-height: 1.35;
+  }
+
+  .portada-headline {
+    font-size: clamp(27px, 7.8vw, 34px);
+    line-height: 1.18;
+  }
+
+  .portada-outro {
+    font-size: clamp(24px, 6.8vw, 30px);
+    line-height: 1.25;
+  }
+
+  .portada-scroll {
+    margin-top: 0.45rem;
+  }
+
+  .portada-social {
+    display: none;
+  }
+
   .filosofia-grid { grid-template-columns: 1fr; gap: 0; }
   .filosofia-bloque:first-child {
     padding-left: clamp(2rem, 5vw, 6rem);
     padding-right: clamp(2rem, 5vw, 6rem);
+  }
+  /* Sube el rectángulo naranja hacia la zona del bloque negro (mobile) */
+  .filosofia-highlight-icon {
+    margin-top: -135px;
   }
 
   .section--quienes-somos .container,
@@ -1145,9 +1320,15 @@ a.contacto-item-sq:hover {
   .viewer-header { padding: var(--sp-xs) var(--sp-s); }
 
   .contacto-wrap { grid-template-columns: 1fr; }
-  .contacto-left { padding: var(--sp-l) var(--sp-m); min-height: unset; }
+  .contacto-left {
+    padding: var(--sp-m) clamp(1.5rem, 8vw, 3rem);
+    min-height: unset;
+  }
   .contacto-right { border-top: 2px solid var(--c-naranja); }
-  .contacto-item { padding: var(--sp-m) var(--sp-m); }
+  .contacto-item {
+    gap: clamp(1rem, 5vw, 3rem);
+    padding: var(--sp-m) clamp(1.5rem, 8vw, 3rem);
+  }
 
   .footer-inner { flex-direction: column; align-items: flex-start; }
 
@@ -1162,8 +1343,50 @@ a.contacto-item-sq:hover {
 
 @media (max-width: 480px) {
   .section { padding-block: var(--sp-m); }
-  .section--portada { padding-block: var(--sp-l); }
+  .section--portada {
+    padding-top: var(--header-h);
+    padding-bottom: 0;
+  }
   .galeria-grid { grid-template-columns: 1fr; }
+  .galeria-title-line { margin-bottom: var(--sp-s); }
+  .section--contacto { padding-block: 0; }
+  .contacto-left { padding: 2rem var(--sp-s) var(--sp-m); }
+  .contacto-kicker {
+    max-width: 11ch;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 0.10em;
+  }
+  .contacto-headline { font-size: clamp(28px, 8vw, 32px); }
+  .contacto-texto {
+    font-size: clamp(15px, 4vw, 17px);
+    color: rgba(255,255,255,0.62);
+    margin-top: var(--sp-xs);
+    margin-bottom: var(--sp-s);
+  }
+  .contacto-btn {
+    background: var(--c-naranja);
+    color: var(--c-blanco);
+    border-color: var(--c-naranja);
+  }
+  .contacto-item {
+    gap: 1rem;
+    padding: 2.25rem var(--sp-s);
+  }
+  .contacto-item-sq {
+    width: 42px;
+    height: 42px;
+  }
+  .contacto-item-label { font-size: 11px; }
+  .contacto-item-value { font-size: 16px; }
+  .contacto-wrap::after {
+    content: '';
+    display: block;
+    height: 42px;
+    background: var(--c-negro);
+    border-bottom: 2px solid var(--c-naranja);
+  }
 }
 
 /* --- 9. Accesibilidad --- */
@@ -1200,13 +1423,13 @@ a.contacto-item-sq:hover {
 .section--quienes-somos { background: var(--c-blanco); }
 
 .qs-header {
-  margin-bottom: var(--sp-l);
+  margin-bottom: var(--sp-s);
 }
 
 .qs-title {
   font-size: clamp(36px, 5vw, 64px) !important;
   font-weight: 400 !important;
-  color: rgba(0,0,0,0.16) !important;
+  color: rgba(0,0,0,0.55) !important;
   letter-spacing: -0.01em !important;
   line-height: 1 !important;
   margin-bottom: 0.3em !important;
@@ -1241,6 +1464,10 @@ a.contacto-item-sq:hover {
   line-height: 1.75;
 }
 
+.qs-col-main p:last-child {
+  margin-bottom: 0;
+}
+
 .qs-destacado {
   font-size: clamp(17px, 1vw + 13px, 22px);
   color: #1F1F1F;
@@ -1251,7 +1478,7 @@ a.contacto-item-sq:hover {
 .qs-col-aside {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-s);
+  gap: 24px;
 }
 
 /* Stats box */
@@ -1298,16 +1525,17 @@ a.contacto-item-sq:hover {
 /* Signature card */
 .qs-firma-card {
   background: var(--c-blanco);
-  border: 1px solid rgba(0,0,0,0.09);
-  padding: var(--sp-s);
   display: flex;
-  align-items: center;
-  gap: var(--sp-s);
+  align-items: flex-end;
+  gap: 12px;
+  width: auto;
+  padding: 0;
+  border: 0;
 }
 
 .qs-firma-foto {
-  width: 80px;
-  height: 80px;
+  width: 118px;
+  height: 118px;
   object-fit: cover;
   object-position: center top;
   flex-shrink: 0;
@@ -1315,16 +1543,19 @@ a.contacto-item-sq:hover {
 }
 
 .qs-firma-cargo {
-  font-size: var(--fs-small);
-  color: var(--c-gris);
-  margin-bottom: 0.25em;
-  line-height: 1.4;
+  max-width: 13ch;
+  font-size: 13px;
+  color: #8A8A8A;
+  margin-bottom: 0.05em;
+  line-height: 1.1;
+  letter-spacing: 0;
 }
 
 .qs-firma-nombre {
-  font-size: var(--fs-body);
+  font-size: 15px;
   color: var(--c-negro);
-  letter-spacing: 0.03em;
+  line-height: 1.1;
+  letter-spacing: 0;
 }
 
 /* Value cards */
@@ -1482,7 +1713,11 @@ a.contacto-item-sq:hover {
   padding-block: var(--sp-m);
 }
 
-.section--diseno .arq2-title { color: rgba(0,0,0,0.35); }
+.section--diseno .arq2-title { color: rgba(0,0,0,0.55); }
+
+.section--diseno .arq2-header {
+  margin-bottom: var(--sp-s);
+}
 
 .dis2-top {
   display: grid;
@@ -1500,10 +1735,10 @@ a.contacto-item-sq:hover {
 }
 
 .dis2-intro p {
-  color: var(--c-gris) !important;
+  color: #333333 !important;
   line-height: 1.75;
   font-size: clamp(17px, 1vw + 13px, 22px);
-  font-weight: 550;
+  font-weight: 400;
 }
 
 .dis2-body {
@@ -1523,8 +1758,8 @@ a.contacto-item-sq:hover {
 
 .dis2-tipos {
   font-size: clamp(17px, 1vw + 13px, 22px) !important;
-  font-weight: 600;
-  color: var(--c-gris) !important;
+  font-weight: 400;
+  color: #333333 !important;
   margin-top: var(--sp-s);
 }
 
@@ -1536,6 +1771,10 @@ a.contacto-item-sq:hover {
   color: var(--c-negro);
 }
 
+.section--arquitectura .arq2-header {
+  margin-bottom: var(--sp-s);
+}
+
 .arq2-header {
   margin-bottom: var(--sp-m);
 }
@@ -1543,7 +1782,7 @@ a.contacto-item-sq:hover {
 .arq2-title {
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 400;
-  color: rgba(0,0,0,0.16);
+  color: rgba(0,0,0,0.55);
   letter-spacing: -0.01em;
   line-height: 1;
   margin-bottom: 0.3em;
@@ -1567,7 +1806,7 @@ a.contacto-item-sq:hover {
   grid-template-columns: 42% 1fr;
   gap: var(--sp-m);
   align-items: center;
-  margin-bottom: var(--sp-m);
+  margin-bottom: var(--sp-s);
 }
 
 .arq2-img img {
@@ -1602,8 +1841,8 @@ a.contacto-item-sq:hover {
   text-align: right;
   padding-right: 24px;
   border-right: 3px solid var(--c-naranja);
-  margin-top: var(--sp-m);
-  margin-bottom: var(--sp-m);
+  margin-top: var(--sp-s);
+  margin-bottom: var(--sp-s);
   margin-left: auto;
   max-width: 70%;
 }
@@ -1669,6 +1908,10 @@ a.contacto-item-sq:hover {
 .section--construccion {
   background: #546670;
   color: var(--c-blanco);
+}
+
+.section--construccion .const2-header {
+  margin-bottom: var(--sp-s);
 }
 
 .const2-header {
@@ -1800,21 +2043,53 @@ a.contacto-item-sq:hover {
    RESPONSIVE — nuevas secciones
    ============================================================= */
 @media (max-width: 900px) {
-  .qs-grid { grid-template-columns: 1fr; }
+  .qs-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-s);
+    margin-bottom: var(--sp-s);
+  }
+  .qs-col-aside { gap: var(--sp-s); }
+  .qs-stats { order: 2; }
+  .qs-firma-card { order: 1; }
   .qs-values { grid-template-columns: repeat(2, 1fr); }
   .servicio-pro-grid { grid-template-columns: 1fr; }
-  .const2-row1,
-  .const2-row2 { grid-template-columns: 1fr; }
+  .const2-row1 {
+    grid-template-columns: 1fr;
+    margin-bottom: var(--sp-s);
+  }
+  .const2-row2 {
+    grid-template-columns: 1fr;
+    gap: var(--sp-s);
+  }
   .const2-img img { height: 220px; }
   .const2-cats {
     max-width: 100%;
     margin-left: 0;
   }
   .const2-altura {
+    border-left: 4px solid var(--c-naranja);
+    padding: var(--sp-s) var(--sp-m);
+    background: rgba(0,0,0,0.15);
+    color: rgba(255,255,255,0.85);
+    font-size: clamp(17px, 1vw + 13px, 22px);
+    line-height: 1.75;
     max-width: 100%;
     margin-left: 0;
   }
-  .arq2-main { grid-template-columns: 1fr; }
+  .const2-quote {
+    border-left: 0;
+    padding: 0;
+    background: transparent;
+  }
+  .const2-quote p {
+    font-size: clamp(16px, 0.7vw + 11px, 21px);
+    color: rgba(255,255,255,0.70);
+    line-height: 1.65;
+  }
+  .arq2-main {
+    grid-template-columns: 1fr;
+    gap: var(--sp-s);
+  }
   .arq2-top-row { grid-template-columns: 1fr; }
   .arq2-img img { height: 220px; }
   .arq2-tipos { align-items: flex-start; }
@@ -1830,7 +2105,45 @@ a.contacto-item-sq:hover {
 }
 
 @media (max-width: 600px) {
-  .qs-values { grid-template-columns: 1fr; }
+  .qs-grid {
+    margin-bottom: 3rem;
+  }
+  .qs-col-aside {
+    gap: 3rem;
+  }
+  .qs-stats {
+    padding: 3rem 2.25rem;
+  }
+  .qs-stat {
+    padding-block: 1.2rem;
+    border-bottom-color: rgba(255,255,255,0.12);
+  }
+  .qs-stat-num {
+    font-size: 34px;
+  }
+  .qs-stat-plus {
+    font-size: 20px;
+  }
+  .qs-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.68);
+    line-height: 1.35;
+    margin-top: 0.6rem;
+  }
+  .qs-values {
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: var(--c-blanco);
+  }
+  .qs-value-card {
+    padding: 1.15rem var(--sp-s);
+  }
+  .qs-value-icon {
+    margin-bottom: 0.85rem;
+  }
+  .qs-value-card h3 {
+    margin-bottom: 0.35em;
+  }
   .servicio-num { font-size: 64px; }
 
   /* Arquitectura mobile */
@@ -1845,6 +2158,8 @@ a.contacto-item-sq:hover {
     border-left: 3px solid var(--c-naranja);
     padding-right: 0;
     padding-left: var(--sp-s);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     max-width: 100%;
     margin-left: 0;
   }
