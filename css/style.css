@@ -448,6 +448,7 @@ body {
 
 /* FILOSOFÍA */
 .section--filosofia {
+  --c-filosofia-oscuro: #4F6269;
   background: var(--c-gris-claro);
   border-top: 18px solid var(--c-naranja);
   border-bottom: 10px solid var(--c-negro);
@@ -474,7 +475,7 @@ body {
 }
 
 .filosofia-bloque:first-child {
-  background: var(--c-negro);
+  background: var(--c-filosofia-oscuro);
   padding-left: clamp(2rem, 5vw, 6rem);
   padding-right: clamp(2rem, 5vw, 6rem);
   justify-content: center;
@@ -521,24 +522,24 @@ body {
   }
 
   .filosofia-bloque {
-    min-height: 190px;
+    min-height: clamp(260px, 22vw, 310px);
     padding: 0;
   }
 
   .filosofia-bloque:first-child {
     justify-content: flex-end;
     padding: 0 clamp(5rem, 10vw, 7rem) 0 2rem;
-    background: var(--c-negro);
+    background: var(--c-filosofia-oscuro);
     text-align: left;
   }
 
   .filosofia-bloque:first-child p {
     display: block;
-    max-width: 27ch;
+    max-width: 29ch;
     margin: 0;
     color: var(--c-blanco);
-    font-size: clamp(18px, 1vw, 21px);
-    line-height: 1.35;
+    font-size: 26px;
+    line-height: 1.22;
   }
 
   .filosofia-bloque--highlight {
@@ -569,12 +570,32 @@ body {
   }
 
   .filosofia-bloque--highlight p {
-    max-width: 40ch;
-    margin-top: 35px;
+    max-width: 43ch;
+    margin-top: clamp(42px, 4vw, 58px);
     color: var(--c-negro);
-    font-size: clamp(16px, 0.8vw, 19px);
-    line-height: 1.28;
+    font-size: 21px;
+    line-height: 1.24;
     letter-spacing: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .filosofia-bloque:first-child p {
+    font-size: 30px;
+  }
+
+  .filosofia-bloque--highlight p {
+    font-size: 23px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .filosofia-bloque:first-child p {
+    font-size: 34px;
+  }
+
+  .filosofia-bloque--highlight p {
+    font-size: 26px;
   }
 }
 
@@ -747,6 +768,16 @@ body {
   border-color: var(--c-gris-claro);
 }
 
+.galeria-grid.is-viewer-disabled img.proyecto-thumb {
+  cursor: zoom-in;
+}
+
+.galeria-grid.is-viewer-disabled img.proyecto-thumb:hover,
+.galeria-grid.is-viewer-disabled img.proyecto-thumb:focus {
+  outline: 2px solid var(--c-naranja);
+  outline-offset: -2px;
+}
+
 .proyecto-thumb {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -898,8 +929,8 @@ body {
 }
 
 .contacto-texto {
-  font-size: clamp(15px, 1vw + 12px, 19px);
-  color: rgba(255,255,255,0.45);
+  font-size: clamp(16px, 1vw + 13px, 21px);
+  color: rgba(255,255,255,0.72);
   line-height: 1.65;
   max-width: 38ch;
   margin-top: var(--sp-s);
@@ -1094,7 +1125,7 @@ a.contacto-item-sq:hover {
 }
 
 .brand-bar-tagline {
-  font-size: clamp(22px, 2.5vw + 10px, 42px);
+  font-size: clamp(22px, 2.2vw + 10px, 36px);
   color: #AAAAAA;
   line-height: 1.4;
 }
@@ -1150,6 +1181,10 @@ a.contacto-item-sq:hover {
     height: clamp(215px, 18vw, 270px);
   }
 
+  .brand-bar-tagline {
+    white-space: nowrap;
+  }
+
   .brand-bar-social {
     align-self: flex-start;
     margin-left: auto;
@@ -1188,6 +1223,7 @@ a.contacto-item-sq:hover {
     font-size: clamp(24px, 7vw, 32px);
     color: #777;
     line-height: 1.28;
+    white-space: normal;
   }
   .brand-bar-social {
     gap: 0.8rem;
@@ -1281,6 +1317,94 @@ a.contacto-item-sq:hover {
 }
 
 .project-viewer[hidden] { display: none; }
+
+.simple-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(0,0,0,0.88);
+}
+
+.simple-lightbox[hidden] {
+  display: none;
+}
+
+.simple-lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.simple-lightbox-titulo {
+  position: absolute;
+  top: clamp(1rem, 2vw, 1.6rem);
+  left: clamp(1rem, 2vw, 1.6rem);
+  max-width: min(62ch, calc(100% - 12rem));
+  color: var(--c-blanco);
+  font-size: clamp(16px, 1vw + 13px, 21px);
+  line-height: 1.25;
+  background: rgba(0,0,0,0.34);
+  padding: 0.55em 0.8em;
+}
+
+.simple-lightbox-cerrar {
+  position: absolute;
+  top: clamp(1rem, 2vw, 1.6rem);
+  right: clamp(1rem, 2vw, 1.6rem);
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: var(--c-blanco);
+  cursor: pointer;
+  font-family: var(--font-base);
+  font-size: var(--fs-small);
+  letter-spacing: 0.05em;
+  padding: 0.65em 1em;
+}
+
+.simple-lightbox-cerrar:hover,
+.simple-lightbox-cerrar:focus {
+  background: var(--c-naranja);
+  border-color: var(--c-naranja);
+  outline: none;
+}
+
+.simple-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(44px, 5vw, 64px);
+  height: clamp(52px, 6vw, 76px);
+  border: 0;
+  background: rgba(255,255,255,0.12);
+  color: var(--c-blanco);
+  cursor: pointer;
+  font-family: var(--font-base);
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.simple-lightbox-nav:hover,
+.simple-lightbox-nav:focus {
+  background: rgba(242,160,68,0.85);
+  outline: none;
+}
+
+.simple-lightbox-prev {
+  left: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.simple-lightbox-next {
+  right: clamp(0.75rem, 2vw, 1.5rem);
+}
 
 .viewer-header {
   display: flex;
@@ -1505,6 +1629,15 @@ a.contacto-item-sq:hover {
   }
 
   .filosofia-grid { grid-template-columns: 1fr; gap: 0; }
+  .filosofia-bloque:first-child p {
+    font-size: 26px;
+    line-height: 1.28;
+    text-align: left;
+  }
+  .filosofia-bloque--highlight p {
+    font-size: 18px;
+    line-height: 1.55;
+  }
   .filosofia-bloque:first-child {
     padding-left: clamp(2rem, 5vw, 6rem);
     padding-right: clamp(2rem, 5vw, 6rem);
@@ -1578,8 +1711,8 @@ a.contacto-item-sq:hover {
   }
   .contacto-headline { font-size: clamp(28px, 8vw, 32px); }
   .contacto-texto {
-    font-size: clamp(15px, 4vw, 17px);
-    color: rgba(255,255,255,0.62);
+    font-size: clamp(16px, 4.2vw, 18px);
+    color: rgba(255,255,255,0.74);
     margin-top: var(--sp-xs);
     margin-bottom: var(--sp-s);
   }
@@ -1764,7 +1897,7 @@ a.contacto-item-sq:hover {
   max-width: 13ch;
   font-size: 13px;
   color: #8A8A8A;
-  margin-bottom: 0.05em;
+  margin-bottom: 0;
   line-height: 1.1;
   letter-spacing: 0;
 }
@@ -1774,6 +1907,7 @@ a.contacto-item-sq:hover {
   color: var(--c-negro);
   line-height: 1.1;
   letter-spacing: 0;
+  margin-top: 0.35em;
 }
 
 @media (min-width: 901px) {
@@ -2371,7 +2505,8 @@ a.contacto-item-sq:hover {
 
 @media (min-width: 901px) {
   .section--construccion {
-    padding-block: clamp(0.75rem, 1.2vw, 1.4rem);
+    padding-top: clamp(0.75rem, 1.2vw, 1.4rem);
+    padding-bottom: clamp(2.5rem, 4vw, 4rem);
   }
 
   .section--construccion .const2-cats {
@@ -2403,16 +2538,27 @@ a.contacto-item-sq:hover {
   }
 
   .section--construccion .const2-quote {
+    position: relative;
     max-width: 820px;
-    margin: 0;
-    padding: 0 0 0 18px;
-    border-left: 12px solid var(--c-naranja);
+    margin: -16px 0 0;
+    padding: 0 0 0 30px;
+    border-left: 0;
     background: transparent;
   }
 
+  .section--construccion .const2-quote::before {
+    content: '';
+    position: absolute;
+    top: 0.08em;
+    left: 0;
+    width: 12px;
+    height: calc(100% - 0.08em);
+    background: var(--c-naranja);
+  }
+
   .section--construccion .const2-quote p {
-    position: relative;
-    top: -16px;
+    position: static;
+    top: auto;
     color: var(--c-blanco);
     font-size: 19px;
     line-height: 1.25;
@@ -2451,7 +2597,7 @@ a.contacto-item-sq:hover {
 
   .section--construccion .const2-altura {
     font-size: clamp(18px, 0.8vw + 13px, 23px);
-    line-height: 1.40;
+    line-height: 1.55;
   }
 }
 
