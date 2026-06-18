@@ -2556,16 +2556,6 @@ a.contacto-item-sq:hover {
     background: var(--c-naranja);
   }
 
-  .section--construccion .const2-quote::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 12px;
-    height: calc(10px + 32px);
-    background: var(--c-blanco);
-  }
-
   .section--construccion .const2-quote p {
     position: static;
     top: auto;
@@ -2579,15 +2569,18 @@ a.contacto-item-sq:hover {
     display: flex;
     align-items: stretch;
     gap: 18px;
-    margin-top: 10px !important;
+    margin-top: 0 !important;
     padding-top: 0;
-    padding-left: 30px;
+    padding-left: 0;
     line-height: normal;
     transform: translateY(0);
   }
 
   .section--construccion .const2-cta-wrap::before {
-    content: none;
+    content: '';
+    width: 12px;
+    background: var(--c-blanco);
+    flex: 0 0 12px;
   }
 
   .section--construccion .const2-cta {
